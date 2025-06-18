@@ -58,7 +58,7 @@ export default function TranscriberAgent() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-6">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <h1 className="text-2xl font-bold text-gray-900">УМКА ИИ онлайн</h1>
@@ -90,27 +90,27 @@ export default function TranscriberAgent() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <main className="w-full px-6 py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-[calc(100vh-8rem)]">
           
           {/* Left Column - Transcript (1/3 width) */}
           <div className="lg:col-span-1">
             <Card className="h-full">
               <CardHeader>
-                <CardTitle className="text-lg font-semibold">Транскрипт встречи</CardTitle>
+                <CardTitle className="text-xl font-semibold">Транскрипт встречи</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-4 max-h-96 overflow-y-auto">
-                  {mockTranscript.map((item, index) => (
+                <div className="space-y-4 h-[calc(100vh-12rem)] overflow-y-auto">
+                                      {mockTranscript.map((item, index) => (
                     <div key={index} className="border-l-4 border-blue-500 pl-4">
-                      <div className="font-medium text-sm text-gray-600">{item.speaker}</div>
-                      <div className="text-gray-800 mt-1">{item.message}</div>
+                      <div className="font-medium text-base text-gray-600">{item.speaker}</div>
+                      <div className="text-gray-800 mt-1 text-base">{item.message}</div>
                     </div>
                   ))}
-                  {isRecording && (
+                                      {isRecording && (
                     <div className="border-l-4 border-red-500 pl-4">
-                      <div className="font-medium text-sm text-red-600">Запись...</div>
-                      <div className="text-gray-800 mt-1 italic">Идет живая транскрипция...</div>
+                      <div className="font-medium text-base text-red-600">Запись...</div>
+                      <div className="text-gray-800 mt-1 italic text-base">Идет живая транскрипция...</div>
                     </div>
                   )}
                 </div>
@@ -119,21 +119,21 @@ export default function TranscriberAgent() {
           </div>
 
           {/* Right Column - Analysis & Q&A (2/3 width) */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-4">
             
             {/* Top Half - Summary */}
-            <Card>
+            <Card className="h-[calc(50vh-6rem)]">
               <CardHeader>
-                <CardTitle className="text-lg font-semibold">Основные тезисы</CardTitle>
+                <CardTitle className="text-xl font-semibold">Основные тезисы</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-3">
+                <div className="space-y-4 h-[calc(50vh-10rem)] overflow-y-auto">
                   {mockSummary.map((point, index) => (
                     <div key={index} className="flex items-start space-x-3">
-                      <div className="flex-shrink-0 w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
-                        <span className="text-xs font-medium text-blue-600">{index + 1}</span>
+                      <div className="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                        <span className="text-sm font-medium text-blue-600">{index + 1}</span>
                       </div>
-                      <p className="text-gray-700">{point}</p>
+                      <p className="text-gray-700 text-base">{point}</p>
                     </div>
                   ))}
                 </div>
@@ -141,14 +141,14 @@ export default function TranscriberAgent() {
             </Card>
 
             {/* Bottom Half - Q&A */}
-            <Card>
+            <Card className="h-[calc(50vh-6rem)]">
               <CardHeader>
-                <CardTitle className="text-lg font-semibold">Вопросы и ответы</CardTitle>
+                <CardTitle className="text-xl font-semibold">Вопросы и ответы</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="flex flex-col space-y-4 h-[calc(50vh-10rem)]">
                 
                 {/* Question Input */}
-                <div className="flex space-x-2">
+                <div className="flex space-x-2 flex-shrink-0">
                   <Input
                     placeholder="Задайте вопрос о встрече..."
                     value={question}
@@ -162,14 +162,14 @@ export default function TranscriberAgent() {
                 </div>
 
                 {/* Q&A List */}
-                <div className="space-y-4 max-h-64 overflow-y-auto">
+                <div className="space-y-4 flex-1 overflow-y-auto">
                   {answers.map((qa, index) => (
                     <div key={index} className="space-y-2">
-                      <div className="bg-blue-50 rounded-lg p-3">
-                        <p className="font-medium text-blue-900">В: {qa.question}</p>
+                      <div className="bg-blue-50 rounded-lg p-4">
+                        <p className="font-medium text-blue-900 text-base">В: {qa.question}</p>
                       </div>
-                      <div className="bg-gray-50 rounded-lg p-3">
-                        <p className="text-gray-800">О: {qa.answer}</p>
+                      <div className="bg-gray-50 rounded-lg p-4">
+                        <p className="text-gray-800 text-base">О: {qa.answer}</p>
                       </div>
                     </div>
                   ))}
@@ -185,13 +185,13 @@ export default function TranscriberAgent() {
         <Button
           onClick={handleStartRecording}
           size="lg"
-          className={`rounded-full w-16 h-16 shadow-lg transition-colors ${
+          className={`rounded-full w-20 h-20 shadow-lg transition-colors ${
             isRecording 
               ? 'bg-red-500 hover:bg-red-600 animate-pulse' 
               : 'bg-blue-500 hover:bg-blue-600'
           }`}
         >
-          <Mic className="h-8 w-8" />
+          <Mic className="h-10 w-10" />
         </Button>
       </div>
 
