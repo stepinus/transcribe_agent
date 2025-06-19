@@ -20,7 +20,7 @@ async def test_get_streaming():
     
     async with TTSStreamingClient() as client:
         # Простой тест текста
-        test_text = "Hello! This is a test of the streaming TTS API."
+        test_text = "Привет! Это тест потокового TTS API на русском языке."
         
         logger.info(f"📝 Тестируем: '{test_text}'")
         logger.info(f"🎤 Голос: {client.config.config['default_voice']}")
@@ -30,7 +30,7 @@ async def test_get_streaming():
         audio_data = await client.stream_tts_chunk(
             text=test_text,
             voice="Arnold.wav",
-            language="en"
+            language="ru"
         )
         latency = time.time() - start_time
         
@@ -54,9 +54,9 @@ async def test_chunking():
     
     async with TTSStreamingClient() as client:
         long_text = """
-        This is a longer text to test the chunking algorithm. 
-        It contains multiple sentences! Some with exclamation marks. 
-        And some with question marks? The system should split this intelligently.
+        Это более длинный текст для тестирования алгоритма чанкования. 
+        Он содержит несколько предложений! Некоторые с восклицательными знаками. 
+        А некоторые с вопросительными знаками? Система должна разбивать текст разумно.
         """
         
         chunks = client.chunk_text(long_text.strip(), max_chunk_size=50)
@@ -76,9 +76,9 @@ async def test_streaming_generation():
     logger.info("🌊 Тестирование потоковой генерации...")
     
     text = """
-    Welcome to the streaming TTS test! 
-    This text will be converted to speech in chunks. 
-    Each chunk is processed separately for optimal performance.
+    Добро пожаловать в тест потокового TTS! 
+    Этот текст будет преобразован в речь по частям. 
+    Каждый чанк обрабатывается отдельно для оптимальной производительности.
     """
     
     async with TTSStreamingClient() as client:

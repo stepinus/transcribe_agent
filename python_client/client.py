@@ -29,7 +29,7 @@ class TTSConfig:
             "api_alltalk_ip_port": "80.251.139.116:7851",
             "api_connection_timeout": 10,
             "default_voice": "Arnold.wav",
-            "default_language": "en",
+            "default_language": "ru",
             "default_chunk_size": 100,
         }
         self.config = self.load_config()
