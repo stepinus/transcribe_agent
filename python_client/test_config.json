@@ -1,0 +1,18 @@
+{
+    "api_alltalk_protocol": "http://",
+    "api_alltalk_ip_port": "80.251.139.116:7851",
+    "api_connection_timeout": 1,
+    "max_retries": 2,
+    "retry_delay": 0.1,
+    "cache_ttl": 300,
+    "default_voice": "male_01.wav",
+    "default_language": "en",
+    "default_chunk_size": 200,
+    "default_chunk_timeout": 2.0,
+    "custom_parameter": "test_value",
+    "last_test_chunks": 0,
+    "last_test_size": 0,
+    "last_test_time": 1750303234.630374,
+    "last_stream_first_chunk_delay": null,
+    "last_stream_total_time": 16.246345043182373
+}
